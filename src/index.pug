@@ -1,18 +1,16 @@
 doctype html
 html(lang="en")
   head
-    title Smackenz GitHub
+    title Profile A
     meta(charset="utf-8")
     meta(name="viewport", content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0")
     link(rel="stylesheet", media="all", href="index.css")
   body
     #panel
       h1
-        a(href="https://smackenz.github.io") Smackenz GitHub
+        a(href="https://smackenz.github.io") Profile A
       #content
-    iframe#viewer(name="viewer", allowfullscreen, allowvr)
-    - var navString = nav ? JSON.stringify(nav) : '[]';
-    script(type="text/javascript").
-      var nav = !{navString};
-    //- script(src="groups.js")
-    script(src="index.js")
+        ul
+          li
+            a(href="/") Home
+            a(href="/about") About

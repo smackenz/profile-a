@@ -52,17 +52,37 @@ function renderJs(srcPath, destPath, options) {
   })
 }
 
-renderSass(wwwCss, {
-  file: path.join(src, 'index.sass'),
-  indentedSyntax: true,
-  includePaths: [],
-  outputStyle: "expanded"
-})
-.then(() => renderPug(srcPug, wwwHtml, { nav: nav }))
-.then(() => renderJs(src, www))
-.then(() => {
-  console.log('Success')
-})
-.catch(err => {
-  console.log(err)
-})
+function renderHome() {
+  renderSass(wwwCss, {
+    file: path.join(src, 'index.sass'),
+    indentedSyntax: true,
+    includePaths: [],
+    outputStyle: "expanded"
+  })
+  .then(() => renderPug(srcPug, wwwHtml, { }))
+  .then(() => renderJs(src, www))
+  .then(() => {
+    console.log('Success')
+  })
+  .catch(err => {
+    console.log(err)
+  })
+}
+
+function renderAbout() {
+  renderSass(path.join(www, 'about', 'index.sass'), {
+    file: path.join(src, 'about', 'index.sass'),
+    indentedSyntax: true,
+    includePaths: [],
+    outputStyle: "expanded"
+  })
+  .then(() => renderPug(path.join(src, 'about', 'index.pug'), path.join(www, 'about', 'index.html'), {  }))
+  .then(() => renderJs(path.join(src, 'about'), path.join(www, 'about')))
+  .then(() => {
+    console.log('Success')
+  })
+  .catch(err => {
+    console.log(err)
+  })
+}
+renderHome()
